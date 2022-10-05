@@ -6,9 +6,9 @@ fi
 
 
 # Download Znap, if it's not there yet.
-[[ -f ~/.zsnap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsnap
+[[ -f ~/.zsnap/zsh-snap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsnap
 
-source ~/.zsnap/znap.zsh  # Start Znapxx
+source ~/.zsnap/zsh-snap/znap.zsh  # Start Znapxx
 
 znap prompt romkatv/powerlevel10k
 
@@ -21,7 +21,7 @@ znap fpath _rustup  'rustup  completions zsh'cs
 znap fpath _cargo   'rustup  completions zsh cargo'
 
 
-#`znap source` automatically downloads and starts your plugins.
+`znap source` automatically downloads and starts your plugins.
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
