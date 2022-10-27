@@ -6,9 +6,9 @@ fi
 
 
 # Download Znap, if it's not there yet.
-[[ -f ~/.zsnap/zsh-snap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsnap
+[[ -f ~/.zsnap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsnap
 
-source ~/.zsnap/zsh-snap/znap.zsh  # Start Znapxx
+source ~/.zsnap/znap.zsh  # Start Znapxx
 
 znap prompt romkatv/powerlevel10k
 
