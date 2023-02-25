@@ -14,29 +14,44 @@ znap prompt romkatv/powerlevel10k
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# get zsh complete kubectl
+source <(kubectl completiosn zsh)
+# source <(kubectl krew completion zsh)
 
+# make completion work with kubecolor
+compdef kubecolor=kubectl
+alias kubectl=kubecolor
 alias k='kubectl'
-znap fpath _kubectl 'kubectl completion  zsh'
-znap fpath _rustup  'rustup  completions zsh'cs
-znap fpath _cargo   'rustup  completions zsh cargo'
+znap fpath _zsh 'kubectl completion zsh'
+# znap fpath _zshkrew 'kubectl krew completion zsh'
+# znap fpath _rustup  'rustup  completions zsh'
+# znap fpath _cargo   'rustup  completions zsh cargo'
 
-
+start=$(date)
+echo "starting source @ $start"
+# =====
 #`znap source` automatically downloads and starts your plugins.
+znap source ohmyzsh/ohmyzsh \
+    'lib/(*~(git|heroku|lein|command-not-found|zsh-kubecolor).zsh)' plugins/git plugins/pip
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
-znap source git
-znap source heroku
-znap source pip
-znap source lein
-znap source command-not-found
-znap source zsh-autosuggestions
-znap source zsh-autocomplete
 znap source zsh-users/zsh-history-substring-search
-znap source aperezdc/zsh-fzy
+znap source gimbo/fzf.zsh
 znap source jimeh/zsh-peco-history
 znap source oknowton/zsh-dwim
 znap source Downager/zsh-helmfile
+znap source molovo/crash
+znap source bigH/git-fuzzy
+znap source yzdann/kctl
+znap source dbz/kube-aliases
+znap source wintermi/zsh-brew
+znap source trejo08/kubecolor-zsh
+znap source dbz/kube-aliases
+znap source devopstales/zsh-kubecolor
+# ======
+end=$(date)
+echo "------- finished source @ $end. $start -> $end"
 #`znap eval` caches and runs any kind of command output for you.
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
 
@@ -151,3 +166,5 @@ function ssheos {
 alias shopt='/usr/bin/shopt'
 PROMPT='$(kube_ps1)'$PROMPT
 export GOROOT="/home/tyhuber/go"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
